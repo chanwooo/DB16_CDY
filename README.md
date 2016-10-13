@@ -1,2 +1,3 @@
 # DB16_CDY
-chawoo, dongsu, yoorim
+(chanwoo, dongsu, yoorim)
+
