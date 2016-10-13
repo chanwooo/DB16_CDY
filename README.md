@@ -1,4 +1,4 @@
-# DATABASE TERM PROJECT
+# 2016-1 DATABASE TERM PROJECT
 ### DB16_CDY
 (chanwoo, dongsu, yoorim)
 
