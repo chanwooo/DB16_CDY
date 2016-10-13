@@ -1,6 +1,6 @@
 # 2016-1 DATABASE TERM PROJECT
 ### DB16_CDY
-(chanwoo, dongsu, yurim)
+(chanwoo, dongsoo, yurim)
 
 쇼핑몰
 
