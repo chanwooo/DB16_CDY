@@ -2,6 +2,8 @@
 ### DB16_CDY
 (chanwoo, dongsoo, yurim)
 
+http://dream.hust.net/cdy/
+
 쇼핑몰
 
 ### 일정
