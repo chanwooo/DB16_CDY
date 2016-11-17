@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="ec74c618-6131-4708-96c9-742369ed6a46" name="cdy" url="http://dream.hust.net">
+      <webServer id="ec74c618-6131-4708-96c9-742369ed6a46" name="server_cdy" url="http://dream.hust.net">
         <fileTransfer host="dream.hust.net" port="22" rootFolder="/usr/share/nginx/www/cdy" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
