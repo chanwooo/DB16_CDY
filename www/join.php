@@ -20,5 +20,5 @@ include 'header.php';
  */
 ?>
 
-info
+join
 </body>

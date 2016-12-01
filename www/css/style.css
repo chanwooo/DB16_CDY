@@ -1,32 +1,60 @@
-#topMenu {           
-	height: 30px;
-	width: 850px;
+*	{
+	margin: 0;
+	padding: 0;
+}
+
+section{
+	width: 1200px;
+}
+.showitem
+{
+	float: left;
+}
+.box {
+	width: 350px;
+}
+ul	{
+	list-style-type: none;
+}
+
+h1{
+	color:#555555;
+}
+
+a	{
+	text-decoration: none;
+}
+
+#topMenu {
+	height: 50px;
+	width: 1000px;
 }
 #topMenu ul li {                  
 	list-style: none;        
-	color: white;              
-	background-color: #2d2d2d; 
+	color: #555555;
+	background-color: #ffffff;
 	float: left;              
-	line-height: 30px;      
+	line-height: 50px;
 	vertical-align: middle;
 	text-align: center;   
 }
 #topMenu .menuLink {                  
 	text-decoration:none;        
-	color: white;               
+	color: #555555;
 	display: block;            
-	width: 150px;           
+	width: 200px;
 	font-size: 12px;       
 	font-weight: bold;    
 	font-family: "Trebuchet MS", Dotum, Arial; 
 }
 #topMenu .menuLink:hover {           
-	color: red;                 
-	background-color: #4d4d4d;  
+	color: #888888;
+	background-color: #eeeeee;
 }
 
-
+/*
 #container  { background-color:#F0F0F0; width:95%; margin:0 auto; padding:10px; }
 #header   { background-color:#908886; height:150px; }
 #content  { background-color:#F5F5F5; float:left; height:2000px; }
 #footer   { background-color:#555555; clear:both; height:100px; }
+*/
