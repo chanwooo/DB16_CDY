@@ -4,14 +4,38 @@
 }
 
 section{
-	width: 1200px;
+	width: 1300px;
+	margin: auto;
 }
-.showitem
+header{
+	margin:auto;
+}
+header h1{
+	/*border: 1px gray solid;*/
+	padding: 100px;
+	text-align: center;
+}
+/*
+footer{
+	border: solid 2px;
+	position: absolute;
+	bottom: -300px;
+}*/
+.showitem{
+	margin: 10px;
+}
+.showitem li
 {
 	float: left;
+	margin: 5px;
+}
+.showitem img
+{
+	border: solid darkgray 1px;
 }
 .box {
-	width: 350px;
+	width: 405px;
+	margin-bottom: 20px;
 }
 ul	{
 	list-style-type: none;
@@ -28,6 +52,7 @@ a	{
 #topMenu {
 	height: 50px;
 	width: 1000px;
+	margin: auto;
 }
 #topMenu ul li {                  
 	list-style: none;        
