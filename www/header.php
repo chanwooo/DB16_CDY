@@ -1,6 +1,6 @@
 <?php
 
-$connect = mysqli_connect("127.0.0.1", "root", "root@@", "shop");
+$connect = mysqli_connect("127.0.0.1", "@@@@@@@@", "@@@@@@@@", "shop");
 mysqli_set_charset($connect,"utf8");
 session_start();
 
