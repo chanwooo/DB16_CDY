@@ -1,10 +1,9 @@
 # 2016-2 DATABASE TERM PROJECT
-### DB16_CDY
-(chanwoo, dongsoo, yurim)
-
+### DB16_CDY_SHOP(chanwoo, dongsoo, yurim)
+##쇼핑몰 만들기
 http://dream.hust.net/cdy/
 
-쇼핑몰
+www : web_root
 
 ### 일정
 |주차|내용|
@@ -18,5 +17,5 @@ http://dream.hust.net/cdy/
 |12w (11/17~11/23)|DB,웹페이지구현|
 |13w (11/24~11/30)|DB,웹페이지구현|
 |14w (12/01~12/07)|DB,웹페이지구현|
-|15w (12/08~12/14)|최종발표|
+|15w (12/08~12/14)|최종발표(12/12)|
 
