@@ -2,16 +2,59 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+       <link rel="stylesheet" type="text/css" href="css/style.css"/>
+<!--
 <style>
 	div{
 		float:left;
 		margin-left:15px;
 	}
-</style>
+</style>-->
 </head>
 <body>
+<?php
+include 'header.php';
+?>
+
+<?php
+$order_id=$_GET["order_id"];
+$sql = "SELECT * FROM shop.orderlist where order_id=$order_id";
+
+$result = mysqli_query($connect,$sql);
+
+$row = mysqli_fetch_array($result);
+
+$sql = "SELECT member_name from shop.member where member_id=(select member_id from shop.orderlist where order_id=$order_id)";
+
+$result2 = mysqli_query($connect,$sql);
+
+$row2 = mysqli_fetch_array($result2);
+
+$sql = "select item_id, item_name, cost from shop.item where item_id=
+	(select item_id from shop.size where itemsize_id=
+		(select itemsize_id from shop.orderlist where order_id=$order_id))";
+
+$result3 = mysqli_query($connect,$sql);
+
+$row3 = mysqli_fetch_array($result3);
+
+$sql="select vendor_name from shop.vendor where vendor_id=
+(select vendor_id from shop.vendor_item where item_id=
+(select item_id from shop.size where itemsize_id=
+(select itemsize_id from shop.orderlist where order_id=$order_id)))";
+$result4 = mysqli_query($connect,$sql);
+
+if($result4==true){
+	echo "불러오기성공";
+}
+else{
+	echo "불러오기실패";
+}
+$row4 = mysqli_fetch_array($result4);
+
+?>
 	<h1>주문확인</h1>
-	<hr color="black" size="2" align="left">
+	<hr color="black" size="2" align="left"><br/>
 	<table border="1">
 		<tr>
 			<td>상품번호</td>
@@ -21,27 +64,27 @@
 			<td>주문상태</td>
 		</td>
 		<tr>
+			<td><?php echo $row3['item_id']; ?></td>
+			<td><?php echo $row3['item_name']; ?></td>
+			<td><?php echo $row['amount']; ?></td>
+			<td><?php echo $row4['vendor_name']; ?></td>
 			<td>...</td>
-			<td>...</td>
-			<td>...</td>
-			<td>한성컴퓨터</td>
-			<td>거래완료</td>
 		</tr>
 	</table>
-	<div>
+	<div><br/>
 	배송지정보
 		<table border="1px">
 			<tr>
 				<td bgcolor="#D5D5D5">받으시는분</td>
-				<td>임동수</td>
+				<td><?php echo $row2['member_name']; ?></td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">연락처</td>
-				<td>010-3315-5704</td>
+				<td><?php echo $row['phoneno']; ?></td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">주소</td>
-				<td>경기 수원시 영통구 영통동 ...</td>
+				<td><?php echo $row['address']; ?></td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">배송시 요구사항</td>
@@ -50,24 +93,24 @@
 		</table>
 
 	</div>
-    <div>
+    <div><br/>
 	결제정보
 		<table border="1px">
 			<tr>
 				<td bgcolor="#D5D5D5">최종결제금액</td>
-				<td>669000</td>
+				<td><?php echo $row3['cost']; ?></td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">결제방법</td>
-				<td>신용카드</td>
+				<td><?php echo $row['how_to_pay']; ?></td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">결제번호</td>
-				<td>123456789</td>
+				<td>...</td>
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">주문일자</td>
-				<td>2016-07-22</td>
+				<td><?php echo $row['order_date']; ?></td>
 			</tr>
 		</table>
 	</div>
@@ -75,5 +118,3 @@
 </body>
 
 </html>
-
-

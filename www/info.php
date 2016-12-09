@@ -20,5 +20,12 @@ include 'header.php';
  */
 ?>
 
-info
+info<br>
+
+fall semester 2016<br>
+
+chanwoo kim<br>
+dongsu lim<br>
+yurim lee<br>
+
 </body>

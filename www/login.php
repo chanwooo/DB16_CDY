@@ -12,45 +12,46 @@
 
 <?php
 include 'header.php';
-include "db_connect.php";
-$name = $_POST['id'];
+session_start();
+
+$id = $_POST['id'];
 $pw = $_POST['password']; # comment
-$query = "select * from users WHERE username = '$name' AND password = '$pw'";
-$result = mysqli_query($db, $query);
+$query = "select count(*),member_id from member where email = '$id' and password = '$pw'";
+$result = mysqli_query($connect, $query);
+$login=mysqli_fetch_row($result);
 
-
-if ($row = mysqli_fetch_array($result))
+if($login[0]=='1')
 {
-    print_r($result);
-
-
-    echo "<p>Thanks for logging in, $name</p>\n";
-    echo "<p><a href=\"search.php\">Continue</a></p>";
-}
-else
-{
-    print_r($result);
-
-    echo "<p>Incorrect username or password</p>\n";
-    echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
-    echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"id\" name=\"id\" /><br />";
-    echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
-    echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"createAccount.php\">Create Account</a></p>";
+    $_SESSION['member_id']=$login[1];
 }
 
+if(!isset($_SESSION['member_id'])) {
+    ?>
 
-?>
-
-
-<div>
+<div style="margin: auto">
     <form method="POST" action="login.php" >
-        <ul  style="float: right"; position="relative">
-            <li style="float:left";><input type="text" name="id" placeholder="id"/></li>
-            <li style="float:left";><input type="password" name="password" placeholder="password"/></li>
-            <li style="float:left";><input type="submit" value="login"/></li>
+        <ul>
+            <li><input type="text" name="id" placeholder="id"/></li>
+            <li><input type="password" name="password" placeholder="password"/></li>
+            <li><input type="submit" value="login"/></li>
         </ul>
     </form>
 </div>
+<?php
+  //  echo "<meta http-equiv='refresh' content='0;url=login.php'>";
+  //  exit;
+}
+else {
+    //$member_id = $_SESSION['user_id'];
+    echo "<meta http-equiv='refresh' content='0;url=index.php'>";
+    /*
+    echo "<p>안녕하세요. $id 님</p>";
+    echo "<p><a href='logout.php'>로그아웃</a></p>";
+    */
+}
+?>
+
+
 
 </body>
 

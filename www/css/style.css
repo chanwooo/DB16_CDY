@@ -15,12 +15,13 @@ header h1{
 	padding: 100px;
 	text-align: center;
 }
-/*
 footer{
-	border: solid 2px;
-	position: absolute;
-	bottom: -300px;
-}*/
+	clear: both;
+	height: 200px;
+	border-top: solid darkgray 1px;
+	padding: 50px 350px;
+	margin-top: 100px;
+}
 .showitem{
 	margin: 10px;
 }
@@ -31,7 +32,10 @@ footer{
 }
 .showitem img
 {
+	width: 400px;
+	height: 400px;
 	border: solid darkgray 1px;
+
 }
 .box {
 	width: 405px;
@@ -51,7 +55,7 @@ a	{
 
 #topMenu {
 	height: 50px;
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 }
 #topMenu ul li {                  
@@ -67,7 +71,7 @@ a	{
 	text-decoration:none;        
 	color: #555555;
 	display: block;            
-	width: 200px;
+	width: 300px;
 	font-size: 12px;       
 	font-weight: bold;    
 	font-family: "Trebuchet MS", Dotum, Arial; 

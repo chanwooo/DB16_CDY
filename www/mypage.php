@@ -12,13 +12,19 @@
 <body>
 <?php
 include 'header.php';
-/**
- * Created by PhpStorm.
- * User: chanwoo
- * Date: 2016. 11. 30.
- * Time: 오후 11:37
- */
+
+if(!isset($_SESSION['member_id'])) {
+    echo "not login";
+    exit;
+}
+
+
+
+    echo "<p>안녕하세요. $member_id 님</p>";
+    echo "<p><a href='logout.php'>로그아웃</a></p>";
+
 ?>
+
 
 mypage
 </body>

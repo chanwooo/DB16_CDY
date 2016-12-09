@@ -9,9 +9,17 @@
 
 </head>
 <body>
-<?php include 'header.php'?>
+<?php include 'header.php';
+
+
+if(!isset($_SESSION['member_id'])) {
+ echo "not login";
+ exit;
+}
+
+?>
 <div>
-<from>
+<form method="get" name="Form">
 <table border="0">
  <caption> CART </caption>
  <tr>
@@ -22,18 +30,57 @@
  <th width="50">수량</th>
  <th width="70">적립금</th>
  </tr>
-<tr height="140">
-<td align="center">
-<input type="checkbox"name="item"value="itemid">
+
+ 
+ <?php
+ $member_id=$_SESSION['member_id'];
+$query = "select * from cart where member_id=$member_id";
+$result = mysqli_query($connect,$query);
+
+
+
+ $count=mysqli_num_rows($result);
+ if($count==0) {
+  echo "<tr><td colspan='6'>주문한 상품이 없습니다.</td></tr></table>";
+  exit;
+ }
+
+ while ($row = mysqli_fetch_array($result)){
+ 	$query1="select * from item where item_id = (select item_id from size where itemsize_id = $row[1])";
+    $row2=mysqli_query($connect,$query1);
+
+    $item =mysqli_fetch_array($row2);
+
+    $query2="select * from size where itemsize_id = $row[1]";
+    $row3=mysqli_query($connect,$query2);
+
+    $size=mysqli_fetch_array($row3);
+
+$mileage= $item[2]*0.01;
+$total_item_cost = $total_item_cost+$item[2];
+$itemsize_id=$size[0];
+echo "$itemsize_id";
+?>
+
+<tr height='140'>
+<td align='center'>
+<input type='checkbox' name='<?=$itemsize_id?>' value='itemid'>
 </td>
-<td align="center">
-<img style="float: left" src="img/20150405_144959.jpg" width="100" height="100">
+<td align='center'>
+<img style='float: left' src='img/<?=$item[0]?>.jpg' width='100' height='100'>
 </td>
- <td align="center">상품정보</td>
- <td align="center">가격</td>
- <td align="center">수량</td>
- <td align="center">적립금</td>
+ <td align='center'><?=$item[1]?>(<?=$size[3]?>)</td>
+ <td align='center'><?=$item[2]?></td>
+ <td align='center'><?=$row[2]?></td>
+ <td align='center'><?=$mileage?></td>
 </tr>
+
+<?php
+
+}
+
+?>
+
 </table>
 <br><br>
 <table border="0" width="790" height="100">
@@ -42,18 +89,41 @@
  <td align="center">배송비</td>
  <td align="center">결제예정금액</td>
  </tr>
+
  <tr>
- <th>50000</th>
+ <th><?=$total_item_cost?></th>
  <th>2000</th>
- <th>52000</th>
+ <th><?=$total_item_cost+2000?></th>
  </tr>
 
 </table>
 <br><br><br>
-<input type="submit"value="주문하기">
+<input type="submit" value="주문하기" onclick='Submit(1)'>
+<input type="submit" value="취소하기" onclick='Submit(2)'>
 </from>
 </div>
 
 </body>
 
 </html>
+<script type="text/javascript">
+
+  function Submit(index) {
+
+    if (index == 1) {
+
+      document.Form.action='order.php';
+
+    }
+
+    if (index == 2) {
+
+      document.Form.action='deletecart.php';
+
+    }
+
+    document.Form.submit();
+
+  }
+
+</script>

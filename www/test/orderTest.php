@@ -21,17 +21,16 @@
 </head>
 <body>
   <?php
-   include 'header.php'
+   include '../header.php'
    ?>
 	<h1>주문/결제</h1>
-<form action="order2.php" method="get">
-<!--
+<form action="inputTest3.php" method="get">
   <fieldset>
     <legend> 주문 상품 확인 </legend>
     <ul>
       <li>
         <label for="itemName">상품 이름</label>
-        <input type="text" id="itemName" name="itemName value="readonly">
+        <input type="text" id="itemName" name="itemName">
       </li>
       <li>
         <label for="amount">주문 수량</label>
@@ -43,88 +42,6 @@
       </li>
     </ul>
   </fieldset>
-  -->
-
-
-
-
-<div>
-<table border="0">
-
- <tr>
- <th width="10"><input type="checkbox" onclick="cartchkall();"/></th>
- <th width="130">이미지</th>
- <th width="400">상품정보</th>
- <th width="80">가격</th>
- <th width="50">수량</th>
- <th width="70">적립금</th>
- </tr>
-
- 
- <?php
- $member_id=$_SESSION['member_id'];
- if(!isset($_SESSION['member_id'])) {
- echo "not login";
- exit;
- }
-$query = "select * from cart where member_id=$member_id";
-$result = mysqli_query($connect,$query);
-
-
-
- $count=mysqli_num_rows($result);
- if($count==0) {
-  echo "<tr><td colspan='6'>주문한 상품이 없습니다.</td></tr></table>";
-  exit;
- }
-
- while ($row = mysqli_fetch_array($result)){
-  $query1="select * from item where item_id = (select item_id from size where itemsize_id = $row[1])";
-    $row2=mysqli_query($connect,$query1);
-
-    $item =mysqli_fetch_array($row2);
-
-$mileage= $item[2]*0.01;
-$total_item_cost = $total_item_cost+$item[2];
-?>
-
-<tr height='140'>
-<td align='center'>
-<input type='checkbox'name='<?=$item[0]?>'value='itemid'>
-</td>
-<td align='center'>
-<img style='float: left' src='img/<?=$item[0]?>.jpg' width='100' height='100'>
-</td>
- <td align='center'><?=$item[1]?></td>
- <td align='center'><?=$item[2]?></td>
- <td align='center'><?=$row[2]?></td>
- <td align='center'><?=$mileage?></td>
-</tr>
-
-<?php
-
-}
-
-?>
-
-</table>
-<br><br>
-<table border="0" width="790" height="100">
- <tr>
- <td align="center">총 상품금액</td>
- <td align="center">배송비</td>
- <td align="center">결제예정금액</td>
- </tr>
-
- <tr>
- <th><?=$total_item_cost?></th>
- <th>2000</th>
- <th><?=$total_item_cost+2000?></th>
- </tr>
-
-</table>
-
-</table>
   <fieldset>
     <legend> 배송지 정보 입력 </legend>
     <ul>
@@ -141,8 +58,8 @@ $total_item_cost = $total_item_cost+$item[2];
         <input type="text" id="phoneNo" name="phoneNo" size="20">
       </li>
       <li>
-        <label for="memo">배송시 요구사항</label>
-        <input type="text" id="memo" name="memo" size="80">
+        <label for="inquire">배송시 요구사항</label>
+        <input type="text" id="inquire" size="80">
       </li>
     </ul>
   </fieldset>

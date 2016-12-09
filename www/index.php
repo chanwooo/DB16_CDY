@@ -20,23 +20,28 @@ include 'header.php'
 			<ul class='showitem'>
 
 				<?php
-				for ($i=0; $i<10; $i++) {
 
-					echo "
+                $query = "SELECT * FROM item";
+                $result = mysqli_query($connect,$query);
+
+
+                while ($row = mysqli_fetch_row($result))
+                {	?>
+
+
 					<li id = '#' class='#' >
 					<div class='box' >
-						<a href = 'detail.php' >
-							<img src = 'img/0001.jpg' />
+						<a href = 'detail.php?item_id=<?=$row[0];?>' >
+							<img src = 'img/<?=$row[0];?>.jpg' />
 						</a>
-							<p><strong style = 'color: #555555;' > 제품명</strong ></p >
-							<p style = 'color: #555555;' > 50,000원 </p >
+							<p style = 'color: #555555;' > <?=$row[1]; ?></p >
 
+						<p style = 'color: #555555;'><strong><?=number_format($row[2]); ?></strong >원</p >
 					</div >
 				</li >
-					";
-					if($i%3==0)
-						echo"<br>";
-				}
+
+
+				<?php }//end of while
 					?>
 
 			</ul>
