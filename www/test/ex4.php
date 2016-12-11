@@ -4,10 +4,12 @@ mysqli_set_charset($connect,"utf8");
 
 $date=date("Ymd");
 $query3 = "INSERT INTO orderlist (itemsize_id, member_id , name, order_date, how_to_pay, address, phoneno, amount, memo) 
-VALUES ('1', '1', 'name', $date, 'pay', 'addr', '01099097009', '1', '주의')";
+VALUES ('1', '1', 'name', $date, 'pay', 'a' , '01099097009', '1', '주의')";
 
-mysqli_query($connect,$query3);//insert orderlist
-
+if(false==mysqli_query($connect,$query3))//insert orderlist
+echo "fail";
+else
+    echo "succes";
 
 
 

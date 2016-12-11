@@ -59,12 +59,11 @@ $result = mysqli_query($connect,$query);
 $mileage= $item[2]*0.01;
 $total_item_cost = $total_item_cost+$item[2];
 $itemsize_id=$size[0];
-echo "$itemsize_id";
 ?>
 
 <tr height='140'>
 <td align='center'>
-<input type='checkbox' name='<?=$itemsize_id?>' value='itemid'>
+<input type='checkbox' name = 'cart[]' value='<?=$itemsize_id?>'>
 </td>
 <td align='center'>
 <img style='float: left' src='img/<?=$item[0]?>.jpg' width='100' height='100'>

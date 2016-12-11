@@ -17,6 +17,7 @@ include 'header.php';
 ?>
 
 <?php
+
 $order_id=$_GET["order_id"];
 $sql = "SELECT * FROM shop.orderlist where order_id=$order_id";
 
@@ -62,7 +63,7 @@ $row4 = mysqli_fetch_array($result4);
 			<td>주문개수</td>
 			<td>판매자</td>
 			<td>주문상태</td>
-		</td>
+		</tr>
 		<tr>
 			<td><?php echo $row3['item_id']; ?></td>
 			<td><?php echo $row3['item_name']; ?></td>
@@ -88,7 +89,7 @@ $row4 = mysqli_fetch_array($result4);
 			</tr>
 			<tr>
 				<td bgcolor="#D5D5D5">배송시 요구사항</td>
-				<td>...</td>
+				<td><?php echo $row['memo']; ?></td>
 			</tr>
 		</table>
 

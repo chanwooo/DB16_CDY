@@ -13,6 +13,8 @@
 	font-weight: 600;
 	line-height: 46px;
 }
+
+
 </style>
 </head>
 <body>
@@ -20,6 +22,19 @@
 include 'header.php';
 ?>
 <h1 align="center">구매내역</h1><br/>
+<center>
+	<table border="1px" width="800px">
+		<tr>
+		<td align="center" width="20px"></td>
+		<td align="center" width="120px">이미지</td>
+		<td align="center" width="150px">상품명</td>
+		<td align="center" width="100px">사이즈</td>
+		<td align="center" width="50px">수량</td>
+		<td align="center" width="130px">가격(원)</td>
+		<td align="center">주문일자</td>
+		</tr>
+	</table>
+	</center><br/>
 <?php
 
 $sql="select * from shop.orderlist where member_id=$member_id order by order_id desc";
@@ -36,7 +51,7 @@ else{
 while($row=mysqli_fetch_array($result)){
 	$itemsize_id=$row['itemsize_id'];
 
-	$sql="select item_name, cost from shop.item where item_id=(select item_id from shop.size where itemsize_id=$itemsize_id)";
+	$sql="select item_name, cost, item_id from shop.item where item_id=(select item_id from shop.size where itemsize_id=$itemsize_id)";
 	$result1=mysqli_query($connect,$sql);
 	/* 쿼리 테스트
 	if($result1==true){
@@ -47,20 +62,27 @@ while($row=mysqli_fetch_array($result)){
 	}
 	*/
 	$row1=mysqli_fetch_array($result1);
+	
+	$sql="select * from shop.size where itemsize_id=$itemsize_id";
+	$result2=mysqli_query($connect,$sql);
+	$row2=mysqli_fetch_array($result2);
+
 
 ?>	
+	
 	<form action="confirm.php" method="get">
 	<center>
-	<div style="border:1px solid; padding:10px; width:700px">
-	<table>
+	<table border="1px" width="800px">
 		<tr>
-		<td><input type="radio" name="order_id" value="<?= $row['order_id'] ?>"></td>
-		<td>상품 이름 : <?=$row1['item_name']; ?></td>
-		<td>구매 수량 : <?=$row['amount']; ?></td>
-		<td>가격 : <?=$row1['cost']; ?></td>
+		<td align="center" width="20px" ><input type="radio" name="order_id" value="<?= $row['order_id'] ?>"></td>
+		<td align="center" width="120px"><img src = "img/<?=$row1['item_id'];?>.jpg" width="100px"/></td>
+		<td align="center" width="150px"><?=$row1['item_name']; ?></td>
+		<td align="center" width="100px"><?=$row2['item_size']; ?></td>
+		<td align="center" width="50px"><?=$row['amount']; ?></td>
+		<td align="center" width="130px"><?=$row1['cost']; ?></td>
+		<td align="center"><?=$row['order_date'];?></td>
 		</tr>
 	</table>
-	</div>
 	</center>
 	<br>
 <?php
@@ -71,38 +93,6 @@ while($row=mysqli_fetch_array($result)){
       <input type="submit" class="ct-btn white large" value="자세히보기">
 </center>
 
-
-<!--
-$sql = "SELECT * FROM shop.orderlist where order_id=$order_id";
-
-$result = mysqli_query($connect,$sql);
-
-$row = mysqli_fetch_array($result);
-
-$sql = "SELECT member_name from shop.member where member_id=(select member_id from shop.orderlist where order_id=$order_id)";
-
-$result2 = mysqli_query($connect,$sql);
-
-$row2 = mysqli_fetch_array($result2);
-
-$sql = "select item_id, item_name, cost from shop.item where item_id=
-	(select item_id from shop.size where itemsize_id=
-		(select itemsize_id from shop.orderlist where order_id=$order_id))";
-
-$result3 = mysqli_query($connect,$sql);
-
-$row3 = mysqli_fetch_array($result3);
-
-$sql="select vendor_name from shop.vendor where vendor_id=
-(select vendor_id from shop.vendor_item where item_id=
-(select item_id from shop.size where itemsize_id=
-(select itemsize_id from shop.orderlist where order_id=$order_id)))";
-$result4 = mysqli_query($connect,$sql);
-
-$row4 = mysqli_fetch_array($result4);
--->
-
-	
 </body>
 
 </html>
