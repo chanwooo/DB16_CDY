@@ -40,7 +40,10 @@ $query1="select * from member";
  exit;
  }
 
- if ($password != $password2) {
+ if ($email == null) {
+     error('email을 입력해주세요');
+ }
+ else if ($password != $password2) {
  	error('비밀번호를 다시 확인해주세요');
  }
  

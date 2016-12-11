@@ -15,9 +15,27 @@ if(!isset($_SESSION['member_id'])) {
 exit;}
 
 
+function error($message) {
+ echo"<script language=javascript>
+ alert('$message');
+ history.go(-1);
+ </script>";
+ exit;
+}
+
 $member_id=$_SESSION['member_id'];
 $size = $_GET['size'];
 $amount = $_GET['amount'];
+
+
+if($size==null)
+{
+ error('장바구니에 넣을 상품의 사이즈를 선택해주세요');
+
+}
+
+
+
 $query="insert into cart (member_id,itemsize_id,amount) values ($member_id,$size,$amount)";
 mysqli_query($connect,$query);
 

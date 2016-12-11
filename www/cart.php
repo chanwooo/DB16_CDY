@@ -9,8 +9,13 @@
 
 </head>
 <body>
-<?php include 'header.php';
 
+<?php include 'header.php';
+?>
+
+<section>
+
+<?php
 
 if(!isset($_SESSION['member_id'])) {
  echo "not login";
@@ -18,12 +23,13 @@ if(!isset($_SESSION['member_id'])) {
 }
 
 ?>
+
 <div>
 <form method="get" name="Form">
 <table border="0">
  <caption> CART </caption>
  <tr>
- <th width="10"><input type="checkbox" onclick="cartchkall();"/></th>
+ <th width="10"><!--<input type="checkbox"/>--></th>
  <th width="130">이미지</th>
  <th width="400">상품정보</th>
  <th width="80">가격</th>
@@ -101,7 +107,7 @@ $itemsize_id=$size[0];
 <input type="submit" value="취소하기" onclick='Submit(2)'>
 </from>
 </div>
-
+</section>
 </body>
 
 </html>

@@ -16,9 +16,27 @@
 include 'header.php';
 ?>
 
+<section>
+
 <?php
 
+function error($message) {
+	echo"<script language=javascript>
+ alert('$message');
+ history.go(-1);
+ </script>";
+	exit;
+}
+
+
 $order_id=$_GET["order_id"];
+
+if($order_id==null)
+{
+	error('주문정보를 확인할 상품을 선택해주세요');
+
+}
+
 $sql = "SELECT * FROM shop.orderlist where order_id=$order_id";
 
 $result = mysqli_query($connect,$sql);
@@ -62,14 +80,14 @@ $row4 = mysqli_fetch_array($result4);
 			<td>상품명</td>
 			<td>주문개수</td>
 			<td>판매자</td>
-			<td>주문상태</td>
+
 		</tr>
 		<tr>
 			<td><?php echo $row3['item_id']; ?></td>
 			<td><?php echo $row3['item_name']; ?></td>
 			<td><?php echo $row['amount']; ?></td>
 			<td><?php echo $row4['vendor_name']; ?></td>
-			<td>...</td>
+			
 		</tr>
 	</table>
 	<div><br/>
@@ -105,17 +123,14 @@ $row4 = mysqli_fetch_array($result4);
 				<td bgcolor="#D5D5D5">결제방법</td>
 				<td><?php echo $row['how_to_pay']; ?></td>
 			</tr>
-			<tr>
-				<td bgcolor="#D5D5D5">결제번호</td>
-				<td>...</td>
-			</tr>
+
 			<tr>
 				<td bgcolor="#D5D5D5">주문일자</td>
 				<td><?php echo $row['order_date']; ?></td>
 			</tr>
 		</table>
 	</div>
-
+</section>
 </body>
 
 </html>

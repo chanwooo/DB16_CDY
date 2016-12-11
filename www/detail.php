@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko-KR" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
 
@@ -14,7 +14,7 @@
 
 
 <?php include 'header.php'; ?>
-
+<section>
  <!--   //echo $item_id;
 /*
     $query = 'SELECT * FROM item where item_id = $item_id';
@@ -93,7 +93,7 @@ $size=mysqli_query($connect,$size_query);
     </form>
 </div>
 
-
+</section>
 </body>
 
 </html>

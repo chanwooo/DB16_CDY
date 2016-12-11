@@ -32,6 +32,8 @@
   <?php
    include 'header.php'
    ?>
+
+  <section>
 	<h1>회원가입</h1>
 <form method="post" action="join2.php">
 	<fieldset>
@@ -58,7 +60,7 @@
 		  </li>
 		  <li>
 			<label for="amount">휴대폰번호</label>
-			<input type="number" id="userPhoneNum" size="30" name="phoneNo">
+			<input type="text" id="userPhoneNum" size="30" name="phoneNo">
 		  </li>
 		  <li>
 			<label for="amount">주소</label>
@@ -71,7 +73,7 @@
       </center>
 	</fieldset>
 </form>
-    
+  </section>
 
 </body>
 

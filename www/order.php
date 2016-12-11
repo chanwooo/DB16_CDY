@@ -52,7 +52,7 @@
 <table border="0">
 
  <tr>
- <th width="10"><input type="checkbox" onclick="cartchkall();"/></th>
+ <!--<th width="10"><input type="checkbox" onclick="cartchkall();"/></th>-->
  <th width="130">이미지</th>
  <th width="400">상품정보</th>
  <th width="80">가격</th>
@@ -89,9 +89,9 @@ $total_item_cost = $total_item_cost+$item[2];
 ?>
 
 <tr height='140'>
-<td align='center'>
+<!--<td align='center'>
 <input type='checkbox'name='<?=$item[0]?>'value='itemid'>
-</td>
+</td>-->
 <td align='center'>
 <img style='float: left' src='img/<?=$item[0]?>.jpg' width='100' height='100'>
 </td>
@@ -125,6 +125,7 @@ $total_item_cost = $total_item_cost+$item[2];
 </table>
 
 </table>
+
   <fieldset>
     <legend> 배송지 정보 입력 </legend>
     <ul>
@@ -141,8 +142,8 @@ $total_item_cost = $total_item_cost+$item[2];
         <input type="text" id="phoneNo" name="phoneNo" size="20">
       </li>
       <li>
-        <label for="memo">배송시 요구사항</label>
-        <input type="text" id="memo" name="memo" size="80">
+        <label for="inquire">배송시 요구사항</label>
+        <input type="text" id="inquire" size="80">
       </li>
     </ul>
   </fieldset>

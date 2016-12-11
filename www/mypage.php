@@ -20,7 +20,9 @@
 <body>
 <?php
 include 'header.php';
-
+?>
+<section>
+<?php
 if(!isset($_SESSION['member_id'])) {
     echo "not login";
     exit;
@@ -108,7 +110,7 @@ while($row=mysqli_fetch_array($result)){
 <center>
       <input type="submit" class="ct-btn white large" value="자세히보기">
 </center>
-
+</section>
 </body>
 
 </html>

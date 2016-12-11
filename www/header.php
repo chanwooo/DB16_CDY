@@ -2,6 +2,7 @@
 
 $connect = mysqli_connect("127.0.0.1", "root", "root@@", "shop");
 mysqli_set_charset($connect,"utf8");
+
 session_start();
 
 if(isset($_SESSION['member_id'])) {
@@ -20,9 +21,10 @@ if(isset($_SESSION['member_id'])) {
                 if(isset($_SESSION['member_id']))
                 {?>
 
-                    <li><a class="menuLink" href="logout.php">LOGOUT</a></li>
-                    <li><a class="menuLink" href="info.php">INFO</a></li>
-                <?php
+                    <li><a class="menuLink" href="logout.php" style="width:600px">LOGOUT</a></li>
+
+
+                    <?php
                 }
                 else
                 {?>

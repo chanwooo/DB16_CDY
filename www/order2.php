@@ -48,8 +48,16 @@ $query3 = "select * from member where member_id=$member_id";
 $result1=mysqli_query($connect,$query3);
 $Mmileage=mysqli_fetch_array($result1);
 $Tmileage=$mileage+$Mmileage[6];//멤버마일리지+구매마일리지
+
 $query1 = "update member set mileage=$Tmileage where member_id=$member_id";
 mysqli_query($connect,$query1);//마일리지업데이트
+
+
+$query1 = "update item set totalSale_rate = totalSale_rate + 1 where item_id = $item[0]";
+mysqli_query($connect,$query1);//판매된 아이템 갯수 증가(totalsale rate)
+
+
+
 $query2 = "delete from cart where member_id=$member_id";
 mysqli_query($connect,$query2);//카트테이블비우기
 

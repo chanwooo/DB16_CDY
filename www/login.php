@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko-KR" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
     <meta name="description" content="CHANWOO" />
@@ -28,15 +28,18 @@ if($login[0]=='1')
 if(!isset($_SESSION['member_id'])) {
     ?>
 
-<div style="margin: auto">
+
+<section>
+
     <form method="POST" action="login.php" >
-        <ul>
+        <ul style="margin-left: 100px;">
             <li><input type="text" name="id" placeholder="id"/></li>
             <li><input type="password" name="password" placeholder="password"/></li>
             <li><input type="submit" value="login"/></li>
         </ul>
     </form>
-</div>
+
+</section>
 <?php
   //  echo "<meta http-equiv='refresh' content='0;url=login.php'>";
   //  exit;
