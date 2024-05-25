@@ -1,7 +1,7 @@
 # 2016-2 DATABASE TERM PROJECT
 ### DB16_CDY_SHOP(chanwoo, dongsoo, yurim)
 ##쇼핑몰 만들기
-http://chanwoo.hust.net/cdy/
+http://chanwookim.me/cdy/
 
 www : web_root
 
